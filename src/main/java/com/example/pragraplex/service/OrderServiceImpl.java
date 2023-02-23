@@ -80,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> createMultipleOrders(int custId, List<Order> orders) {
         Optional<Customer> customerById = customerService.getCustomerById(custId);
         Customer customer = customerById.orElseThrow(
-                ()->new CustomerNotFoundException(String.format("Customer with id %d not found", custId))
+                () -> new CustomerNotFoundException(String.format("Customer with id %d not found", custId))
         );
 
         orders.forEach(order -> order.setCustomer(customer));
@@ -93,10 +93,9 @@ public class OrderServiceImpl implements OrderService {
                     order.setMovie(movie);
 
                 }
-            );
+        );
 
         return repo.saveAll(orders);
     }
-
-
+   //
 }
